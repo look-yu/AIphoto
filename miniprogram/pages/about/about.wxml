@@ -1,0 +1,74 @@
+<!-- 关于页 - Cinematic Darkroom -->
+<view class="page-container">
+  <view class="nav-bar">
+    <text class="nav-title">关于</text>
+  </view>
+
+  <view class="about-content">
+    <view class="about-hero">
+      <text class="about-logo">摄影智评</text>
+      <text class="about-tagline">Photography AI Review</text>
+    </view>
+
+    <view class="about-divider"></view>
+
+    <view class="about-desc-section">
+      <text class="about-desc">
+        依托AI技术为摄影爱好者提供帮助的小程序。轻松有趣，让用户在任何时候都能获得摄影方面的启发与帮助。
+      </text>
+      <text class="about-desc">
+        我们相信，每一张照片都值得被认真对待。
+      </text>
+    </view>
+
+    <view class="about-features">
+      <view class="feature-item">
+        <text class="feature-icon">◉</text>
+        <text class="feature-title">AI智能评阅</text>
+        <text class="feature-text">多维度分析你的作品</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">◈</text>
+        <text class="feature-title">学习成长</text>
+        <text class="feature-text">系统化摄影知识体系</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">◇</text>
+        <text class="feature-title">交流分享</text>
+        <text class="feature-text">与摄影爱好者互动</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 悬浮操作按钮 -->
+  <view class="floating-actions">
+    <view class="float-action">
+      <text class="float-icon">♡</text>
+      <text class="float-label">关注</text>
+    </view>
+    <view class="float-action">
+      <text class="float-icon">✎</text>
+      <text class="float-label">联系</text>
+    </view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-tab">
+    <view class="tab-item" bindtap="goToIndex">
+      <text class="tab-icon">⌂</text>
+      <text class="tab-text">主页</text>
+    </view>
+    <view class="tab-item" bindtap="goToWorks">
+      <text class="tab-icon">▦</text>
+      <text class="tab-text">作品</text>
+    </view>
+    <view class="tab-item" bindtap="goToAcademy">
+      <text class="tab-icon">◈</text>
+      <text class="tab-text">学院</text>
+    </view>
+    <view class="tab-item active">
+      <text class="tab-icon">◉</text>
+      <text class="tab-text">关于</text>
+    </view>
+  </view>
+</view>

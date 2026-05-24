@@ -1,0 +1,9 @@
+<!-- 开屏页 - 纯白启动页 -->
+<view class="splash-container">
+  <!-- 内容区域 -->
+  <view class="content-area">
+    <text class="main-title">发现<span>光影</span>\n之美</text>
+    <view class="divider"></view>
+    <text class="slogan">Light as preface, romance as book</text>
+  </view>
+</view>

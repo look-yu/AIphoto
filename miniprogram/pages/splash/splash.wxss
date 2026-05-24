@@ -1,0 +1,55 @@
+/* 开屏页样式 - 纯白启动页 */
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+/* 内容区域 */
+.content-area {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 60rpx;
+}
+
+/* 主标题 */
+.main-title {
+  font-family: 'Georgia', serif;
+  font-size: 64rpx;
+  font-weight: 400;
+  color: #1A1A1A;
+  margin-bottom: 24rpx;
+  letter-spacing: 2rpx;
+}
+
+.main-title span {
+  color: #4A90A4;
+}
+
+/* 分割线 */
+.divider {
+  width: 80rpx;
+  height: 2rpx;
+  background: #4A90A4;
+  margin-bottom: 24rpx;
+}
+
+/* Slogan */
+.slogan {
+  font-family: 'Georgia', serif;
+  font-size: 26rpx;
+  font-style: italic;
+  color: #888888;
+  margin-bottom: 80rpx;
+}

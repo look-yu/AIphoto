@@ -1,0 +1,20 @@
+/**app.wxss - Light Editorial Theme**/
+page {
+  --bg-white: #FFFFFF;
+  --bg-cream: #FAF9F7;
+  --bg-light: #F5F5F3;
+  --bg-card: #FFFFFF;
+  --accent-amber: #C9A460;
+  --accent-warm: #B8956A;
+  --text-dark: #1A1A1A;
+  --text-body: #3D3D3D;
+  --text-muted: #888888;
+  --border-subtle: rgba(0,0,0,0.08);
+  --shadow-soft: 0 8px 32px rgba(0,0,0,0.06);
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.04);
+
+  background: var(--bg-cream);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: var(--text-dark);
+  min-height: 100vh;
+}

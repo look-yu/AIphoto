@@ -1,0 +1,47 @@
+<!-- 作品页 - Cinematic Darkroom -->
+<view class="page-container">
+  <view class="nav-bar">
+    <text class="nav-title">作品</text>
+  </view>
+
+  <view class="works-section">
+    <text class="section-label">Portfolio</text>
+    <text class="section-title">精选作品</text>
+
+    <view class="works-grid">
+      <view
+        class="work-card {{index % 3 === 0 ? 'large' : ''}}"
+        wx:for="{{worksList}}"
+        wx:key="id"
+        bindtap="onWorkTap"
+        data-id="{{item.id}}"
+      >
+        <image class="work-img" src="{{item.imageUrl}}" mode="aspectFill"></image>
+        <view class="work-info">
+          <text class="work-title">{{item.title}}</text>
+          <text class="work-author">{{item.author}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-tab">
+    <view class="tab-item" bindtap="goToIndex">
+      <text class="tab-icon">⌂</text>
+      <text class="tab-text">主页</text>
+    </view>
+    <view class="tab-item active">
+      <text class="tab-icon">▦</text>
+      <text class="tab-text">作品</text>
+    </view>
+    <view class="tab-item" bindtap="goToAcademy">
+      <text class="tab-icon">◈</text>
+      <text class="tab-text">学院</text>
+    </view>
+    <view class="tab-item" bindtap="goToAbout">
+      <text class="tab-icon">◉</text>
+      <text class="tab-text">关于</text>
+    </view>
+  </view>
+</view>

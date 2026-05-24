@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/splash/splash",
+    "pages/index/index",
+    "pages/works/works",
+    "pages/academy/academy",
+    "pages/about/about",
+    "pages/topic/topic",
+    "pages/review/review"
+  ],
+  "window": {
+    "backgroundColor": "#FAF9F7",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "摄影智评",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

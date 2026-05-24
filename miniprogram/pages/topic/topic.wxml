@@ -1,0 +1,64 @@
+<!-- 话题详情页 -->
+<view class="page-container" wx:if="{{topic}}">
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">←</view>
+    <text class="nav-title">摄影学院</text>
+  </view>
+
+  <!-- 内容区域 -->
+  <scroll-view class="content-scroll" scroll-y>
+    <!-- 头部信息 -->
+    <view class="topic-header">
+      <view class="topic-icon">
+        <text>{{topic.icon}}</text>
+      </view>
+      <view class="topic-meta">
+        <text class="topic-category">{{topic.category}}</text>
+        <text class="topic-title">{{topic.title}}</text>
+        <view class="topic-info">
+          <text class="info-item">⏱ {{topic.duration}}</text>
+          <text class="info-item">◈ {{topic.level}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 教学示范图片 -->
+    <view class="gallery-section" wx:if="{{topic.images && topic.images.length > 0}}">
+      <view class="gallery-header">
+        <text class="gallery-title">📷 示范图片</text>
+        <text class="gallery-hint">点击查看大图</text>
+      </view>
+      <scroll-view class="gallery-scroll" scroll-x>
+        <view class="gallery-grid">
+          <view
+            class="gallery-item"
+            wx:for="{{topic.images}}"
+            wx:key="index"
+            data-url="{{item.url}}"
+            bindtap="previewImage"
+          >
+            <image class="gallery-img" src="{{item.url}}" mode="aspectFill" />
+            <view class="gallery-caption">{{item.caption}}</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 正文内容 -->
+    <view class="topic-content">
+      <text class="content-text">{{topic.content}}</text>
+    </view>
+
+    <!-- 小贴士 -->
+    <view class="tips-section">
+      <text class="tips-title">💡 小贴士</text>
+      <view class="tips-list">
+        <view class="tip-item" wx:for="{{topic.tips}}" wx:key="index">
+          <text class="tip-bullet">•</text>
+          <text class="tip-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

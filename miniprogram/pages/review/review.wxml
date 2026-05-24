@@ -1,0 +1,114 @@
+<!-- 摄影AI评阅页 -->
+<view class="page-container">
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">←</view>
+    <text class="nav-title">AI摄影评阅</text>
+    <view class="nav-share" bindtap="onShare">
+      <text>分享</text>
+    </view>
+  </view>
+
+  <!-- 图片上传/预览区域 -->
+  <view class="upload-section">
+    <!-- 未上传状态 -->
+    <view class="upload-area {{hasImage ? 'hidden' : ''}}" bindtap="chooseImage">
+      <view class="upload-icon">📷</view>
+      <text class="upload-text">点击或拍照上传照片</text>
+      <text class="upload-hint">AI将分析构图、曝光、光线等问题</text>
+    </view>
+
+    <!-- 已上传状态 -->
+    <view class="preview-area {{hasImage ? 'show' : ''}}">
+      <image class="preview-image" src="{{imageUrl}}" mode="aspectFit" />
+      <!-- 问题标注点 -->
+      <view
+        class="issue-marker"
+        wx:for="{{issues}}"
+        wx:key="index"
+        style="left: {{item.x}}%; top: {{item.y}}%;"
+        bindtap="showIssueDetail"
+        data-index="{{index}}"
+      >
+        <view class="marker-dot"></view>
+        <view class="marker-ring"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分析结果区域 -->
+  <view class="result-section" wx:if="{{analyzed}}">
+    <!-- 评分卡片 -->
+    <view class="score-card">
+      <view class="score-header">
+        <text class="score-label">综合评分</text>
+        <text class="score-value">{{score}}</text>
+        <text class="score-unit">/100</text>
+      </view>
+      <view class="score-bar">
+        <view class="score-fill" style="width: {{score}}%;"></view>
+      </view>
+      <text class="score-grade">{{gradeText}}</text>
+    </view>
+
+    <!-- 问题诊断 -->
+    <view class="issues-section">
+      <view class="section-title">📋 问题诊断</view>
+      <view class="issue-list">
+        <view
+          class="issue-item"
+          wx:for="{{analysisResult.issues}}"
+          wx:key="index"
+        >
+          <view class="issue-icon">⚠️</view>
+          <view class="issue-content">
+            <text class="issue-title">{{item.title}}</text>
+            <text class="issue-desc">{{item.description}}</text>
+            <text class="issue-suggestion">💡 {{item.suggestion}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 改进建议 -->
+    <view class="suggestions-section">
+      <view class="section-title">💡 改进建议</view>
+      <view class="suggestion-list">
+        <view
+          class="suggestion-item"
+          wx:for="{{analysisResult.suggestions}}"
+          wx:key="index"
+        >
+          <text class="suggestion-bullet">·</text>
+          <text class="suggestion-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分析中状态 -->
+  <view class="analyzing-section" wx:if="{{analyzing}}">
+    <view class="analyze-animation">
+      <view class="scan-line"></view>
+    </view>
+    <text class="analyze-text">AI正在分析中...</text>
+    <text class="analyze-hint">构图 · 曝光 · 光线 · 对焦</text>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-actions">
+    <view class="action-btn primary" bindtap="{{hasImage && !analyzed ? 'startAnalyze' : (analyzed ? 'reAnalyze' : '')}}">
+      <text>{{analyzed ? '重新评阅' : (analyzing ? '分析中...' : '开始评阅')}}</text>
+    </view>
+    <view class="action-btn secondary" wx:if="{{analyzed}}" bindtap="saveToGallery">
+      <text>保存到作品集</text>
+    </view>
+  </view>
+
+  <!-- 历史记录入口 -->
+  <view class="history-entry" bindtap="goToHistory">
+    <text class="history-icon">📚</text>
+    <text class="history-text">评阅历史</text>
+    <text class="history-arrow">›</text>
+  </view>
+</view>

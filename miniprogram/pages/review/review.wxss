@@ -1,0 +1,430 @@
+/* 摄影AI评阅页 - Editorial Magazine Style */
+page {
+  background: var(--bg-cream);
+}
+
+.page-container {
+  min-height: 100vh;
+  background: var(--bg-cream);
+  padding-bottom: 200rpx;
+}
+
+/* 顶部导航栏 */
+.nav-bar {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-white);
+  padding: 0 32rpx;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1rpx solid var(--border-subtle);
+}
+
+.nav-back {
+  font-size: 44rpx;
+  color: var(--accent-amber);
+  width: 80rpx;
+}
+
+.nav-title {
+  font-family: 'Georgia', serif;
+  font-size: 34rpx;
+  font-weight: 400;
+  color: var(--text-dark);
+  letter-spacing: 4rpx;
+  text-transform: uppercase;
+}
+
+.nav-share {
+  font-size: 26rpx;
+  color: var(--accent-amber);
+  width: 80rpx;
+  text-align: right;
+}
+
+/* 图片上传区域 */
+.upload-section {
+  padding: 40rpx 32rpx;
+  min-height: 400rpx;
+}
+
+.upload-area {
+  height: 500rpx;
+  border: 2rpx dashed var(--accent-amber);
+  border-radius: 24rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-white);
+  gap: 24rpx;
+  transition: all 0.3s ease;
+}
+
+.upload-area:active {
+  background: var(--bg-light);
+}
+
+.upload-area.hidden {
+  display: none;
+}
+
+.upload-icon {
+  font-size: 96rpx;
+  opacity: 0.6;
+}
+
+.upload-text {
+  font-family: 'Georgia', serif;
+  font-size: 32rpx;
+  color: var(--text-dark);
+}
+
+.upload-hint {
+  font-size: 24rpx;
+  color: var(--text-muted);
+}
+
+/* 图片预览 */
+.preview-area {
+  position: relative;
+  background: var(--bg-white);
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: none;
+}
+
+.preview-area.show {
+  display: block;
+}
+
+.preview-image {
+  width: 100%;
+  height: auto;
+  max-height: 600rpx;
+  display: block;
+}
+
+/* 问题标注点 */
+.issue-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.marker-dot {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: rgba(255, 87, 87, 0.8);
+  border: 3rpx solid #fff;
+  box-shadow: 0 4rpx 12rpx rgba(255, 87, 87, 0.4);
+}
+
+.marker-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  border: 2rpx solid rgba(255, 87, 87, 0.5);
+  animation: pulse 1.5s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+/* 分析结果区域 */
+.result-section {
+  padding: 0 32rpx;
+}
+
+/* 评分卡片 */
+.score-card {
+  background: var(--bg-white);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin-bottom: 32rpx;
+  box-shadow: var(--shadow-card);
+}
+
+.score-header {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20rpx;
+}
+
+.score-label {
+  font-size: 24rpx;
+  color: var(--text-muted);
+  letter-spacing: 4rpx;
+  text-transform: uppercase;
+  margin-right: 16rpx;
+}
+
+.score-value {
+  font-family: 'Georgia', serif;
+  font-size: 96rpx;
+  font-weight: 400;
+  color: var(--accent-amber);
+  line-height: 1;
+}
+
+.score-unit {
+  font-size: 32rpx;
+  color: var(--text-muted);
+  margin-left: 8rpx;
+}
+
+.score-bar {
+  height: 8rpx;
+  background: var(--bg-light);
+  border-radius: 4rpx;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-amber) 0%, #E8C068 100%);
+  border-radius: 4rpx;
+  transition: width 0.8s ease;
+}
+
+.score-grade {
+  font-family: 'Georgia', serif;
+  font-size: 28rpx;
+  color: var(--text-body);
+  font-style: italic;
+}
+
+/* 问题诊断 */
+.issues-section {
+  background: var(--bg-white);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin-bottom: 32rpx;
+  box-shadow: var(--shadow-card);
+}
+
+.section-title {
+  font-family: 'Georgia', serif;
+  font-size: 32rpx;
+  color: var(--text-dark);
+  margin-bottom: 28rpx;
+}
+
+.issue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.issue-item {
+  display: flex;
+  gap: 20rpx;
+  padding: 24rpx;
+  background: var(--bg-cream);
+  border-radius: 12rpx;
+  border-left: 4rpx solid var(--accent-amber);
+}
+
+.issue-icon {
+  font-size: 32rpx;
+  flex-shrink: 0;
+}
+
+.issue-content {
+  flex: 1;
+}
+
+.issue-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.issue-desc {
+  font-size: 24rpx;
+  color: var(--text-body);
+  line-height: 1.5;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.issue-suggestion {
+  font-size: 24rpx;
+  color: var(--accent-amber);
+  line-height: 1.4;
+  display: block;
+}
+
+/* 改进建议 */
+.suggestions-section {
+  background: var(--bg-white);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin-bottom: 32rpx;
+  box-shadow: var(--shadow-card);
+}
+
+.suggestion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+}
+
+.suggestion-bullet {
+  color: var(--accent-amber);
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.suggestion-text {
+  font-size: 26rpx;
+  color: var(--text-body);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* 分析中状态 */
+.analyzing-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+}
+
+.analyze-animation {
+  width: 200rpx;
+  height: 200rpx;
+  position: relative;
+  margin-bottom: 32rpx;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--bg-white);
+  box-shadow: var(--shadow-soft);
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, transparent, var(--accent-amber), transparent);
+  animation: scan 1.5s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+.analyze-text {
+  font-family: 'Georgia', serif;
+  font-size: 32rpx;
+  color: var(--text-dark);
+  margin-bottom: 12rpx;
+}
+
+.analyze-hint {
+  font-size: 24rpx;
+  color: var(--text-muted);
+  letter-spacing: 2rpx;
+}
+
+/* 底部操作栏 */
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24rpx 32rpx;
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+  background: var(--bg-white);
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: 20rpx;
+  z-index: 100;
+}
+
+.action-btn {
+  flex: 1;
+  height: 96rpx;
+  border-radius: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Georgia', serif;
+  font-size: 28rpx;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.action-btn.primary {
+  background: var(--accent-amber);
+  color: var(--bg-white);
+}
+
+.action-btn.primary:active {
+  background: var(--accent-warm);
+  transform: scale(0.98);
+}
+
+.action-btn.secondary {
+  background: var(--bg-cream);
+  color: var(--text-dark);
+  border: 1rpx solid var(--border-subtle);
+}
+
+.action-btn.secondary:active {
+  background: var(--bg-light);
+}
+
+/* 历史记录入口 */
+.history-entry {
+  position: fixed;
+  bottom: 140rpx;
+  right: 32rpx;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 16rpx 24rpx;
+  background: var(--bg-white);
+  border-radius: 40rpx;
+  box-shadow: var(--shadow-soft);
+  z-index: 50;
+}
+
+.history-icon {
+  font-size: 28rpx;
+}
+
+.history-text {
+  font-size: 24rpx;
+  color: var(--text-body);
+}
+
+.history-arrow {
+  font-size: 28rpx;
+  color: var(--text-muted);
+}

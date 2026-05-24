@@ -1,0 +1,94 @@
+<!-- 个人中心 -->
+<view class="profile-container">
+  <!-- 用户信息 -->
+  <view class="user-section">
+    <view class="user-info">
+      <image class="avatar" src="{{userInfo.avatar || 'https://miniprogram-1320062640.cos.ap-nanjing.myqcloud.com/avatar.png'}}" mode="aspectFill"></image>
+      <view class="user-detail">
+        <text class="nickname">{{userInfo.nickname || '未登录'}}</text>
+        <text class="user-level">{{userInfo.level || '摄影新手'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 统计数据 -->
+  <view class="stats-section">
+    <view class="stat-item">
+      <text class="stat-num">{{stats.worksCount}}</text>
+      <text class="stat-label">作品</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.reviewsCount}}</text>
+      <text class="stat-label">评阅</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.coursesCount}}</text>
+      <text class="stat-label">学习</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.avgScore}}</text>
+      <text class="stat-label">平均分</text>
+    </view>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="menu-section">
+    <view class="menu-item" bindtap="onMenuTap" data-type="collections">
+      <text class="menu-icon">❤️</text>
+      <text class="menu-text">我的收藏</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="onMenuTap" data-type="history">
+      <text class="menu-icon">📝</text>
+      <text class="menu-text">学习历史</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="onMenuTap" data-type="settings">
+      <text class="menu-icon">⚙️</text>
+      <text class="menu-text">设置</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 设置选项 -->
+  <view class="settings-section">
+    <view class="setting-item">
+      <text class="setting-label">悬浮助手</text>
+      <switch checked="{{settings.assistantEnabled}}" bindchange="onAssistantChange" color="#4A90A4"/>
+    </view>
+    <view class="setting-item">
+      <text class="setting-label">消息通知</text>
+      <switch checked="{{settings.notificationsEnabled}}" bindchange="onNotificationChange" color="#4A90A4"/>
+    </view>
+  </view>
+
+  <!-- 悬浮助手 -->
+  <view class="floating-assistant" bindtap="toggleAssistant">
+    <view class="assistant-btn">
+      <text class="assistant-icon">🤖</text>
+    </view>
+  </view>
+
+  <!-- 底部Tab -->
+  <view class="tab-bar">
+    <view class="tab-item" bindtap="goToIndex">
+      <text class="tab-icon">🏠</text>
+      <text class="tab-text">首页</text>
+    </view>
+    <view class="tab-item" bindtap="goToAcademy">
+      <text class="tab-icon">📚</text>
+      <text class="tab-text">学院</text>
+    </view>
+    <view class="tab-item" bindtap="goToReview">
+      <text class="tab-icon">🔍</text>
+      <text class="tab-text">评阅</text>
+    </view>
+    <view class="tab-item active">
+      <text class="tab-icon">👤</text>
+      <text class="tab-text">我的</text>
+    </view>
+  </view>
+</view>

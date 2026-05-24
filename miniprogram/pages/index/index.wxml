@@ -1,0 +1,118 @@
+<!-- 首页 - Cinematic Darkroom -->
+<view class="page-container">
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <text class="nav-title">摄影智评</text>
+  </view>
+
+  <!-- 全屏Banner -->
+  <view class="hero-banner">
+    <view class="hero-bg">
+      <image src="{{bannerImage}}" mode="aspectFill"></image>
+    </view>
+    <view class="hero-overlay"></view>
+    <text class="hero-side-text">Photography · AI · Review</text>
+
+    <view class="hero-content">
+      <text class="hero-title">发现<span>光影</span>\n之美</text>
+      <text class="hero-subtitle">Light as preface, romance as book</text>
+      <view class="hero-cta" bindtap="goToWorks">探索作品</view>
+    </view>
+
+    <view class="scroll-hint">
+      <view class="scroll-line"></view>
+      <text class="scroll-text">Scroll</text>
+    </view>
+  </view>
+
+  <!-- 作品展示 -->
+  <view class="works-section">
+    <view class="section-header">
+      <text class="section-label">Portfolio</text>
+      <text class="section-title">精选作品</text>
+    </view>
+
+    <view class="works-grid">
+      <view
+        class="work-card"
+        wx:for="{{worksList}}"
+        wx:key="id"
+        bindtap="onWorkTap"
+        data-id="{{item.id}}"
+      >
+        <image class="work-img" src="{{item.imageUrl}}" mode="aspectFill"></image>
+        <view class="work-overlay">
+          <text class="work-title">{{item.title}}</text>
+          <text class="work-meta">{{item.author}} · {{item.score}}分</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 悬浮操作按钮 -->
+  <view class="floating-actions">
+    <view class="float-action" bindtap="goToReview">
+      <text class="float-icon">○</text>
+      <text class="float-label">评阅</text>
+    </view>
+    <view class="float-action" bindtap="onWatch">
+      <text class="float-icon {{isWatched ? 'icon-active' : ''}}">{{isWatched ? '♥' : '♡'}}</text>
+      <text class="float-label">关注</text>
+    </view>
+    <view class="float-action" bindtap="onContact">
+      <view class="float-icon envelope-icon">
+        <view class="env-flap"></view>
+        <view class="env-rect"></view>
+      </view>
+      <text class="float-label">联系</text>
+    </view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-tab">
+    <view class="tab-item active">
+      <text class="tab-icon">⌂</text>
+      <text class="tab-text">主页</text>
+    </view>
+    <view class="tab-item" bindtap="goToWorks">
+      <text class="tab-icon">▦</text>
+      <text class="tab-text">作品</text>
+    </view>
+    <view class="tab-item" bindtap="goToAcademy">
+      <text class="tab-icon">◈</text>
+      <text class="tab-text">学院</text>
+    </view>
+    <view class="tab-item" bindtap="goToAbout">
+      <text class="tab-icon">◉</text>
+      <text class="tab-text">关于</text>
+    </view>
+  </view>
+
+  <!-- 联系弹窗 -->
+  <view class="contact-modal {{showContactModal ? 'show' : ''}}" catchtap="onContactClose">
+    <view class="contact-sheet" catchtap="stopPropagation">
+      <view class="contact-title">联系我们</view>
+      <view class="contact-item" bindtap="onCall">
+        <view class="contact-icon phone-icon">
+          <view class="phone-body"></view>
+          <view class="phone-dot"></view>
+        </view>
+        <view class="contact-info">
+          <text class="contact-label">电话联系</text>
+          <text class="contact-value">188-1575-0907</text>
+        </view>
+      </view>
+      <view class="contact-item" bindtap="onCopyWechat">
+        <view class="contact-icon wechat-icon">
+          <view class="wechat-flap"></view>
+          <view class="wechat-rect"></view>
+        </view>
+        <view class="contact-info">
+          <text class="contact-label">微信联系</text>
+          <text class="contact-value">wxid_g7tro0cr6onu22</text>
+        </view>
+      </view>
+      <view class="contact-cancel" bindtap="onContactClose">取消</view>
+    </view>
+  </view>
+</view>
