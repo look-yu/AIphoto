@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIphoto 摄影学习与评价</title>
+    <style>
+      :root {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color-scheme: light;
+      }
+      body {
+        margin: 0;
+        background: #f5f7fb;
+        color: #1d2939;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 24px 16px 40px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 20px;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+        margin-bottom: 16px;
+      }
+      h1 {
+        font-size: 1.8rem;
+        margin: 0 0 8px;
+      }
+      h2 {
+        font-size: 1.2rem;
+        margin: 0 0 12px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+      li + li {
+        margin-top: 8px;
+      }
+      input[type="file"] {
+        width: 100%;
+      }
+      .preview {
+        max-width: 100%;
+        border-radius: 12px;
+        margin-top: 12px;
+        display: none;
+      }
+      .result {
+        margin-top: 12px;
+        line-height: 1.6;
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 12px;
+        display: none;
+      }
+      .muted {
+        color: #667085;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <h1>AIphoto</h1>
+        <p class="muted">学习摄影知识，并上传照片获取 AI 评价建议。</p>
+      </section>
+
+      <section class="card">
+        <h2>摄影知识小课堂</h2>
+        <ul>
+          <li><strong>构图：</strong>尝试三分法，将主体放在九宫格交点，画面更平衡。</li>
+          <li><strong>光线：</strong>黄金时段（清晨/傍晚）光线柔和，更利于人像和风景。</li>
+          <li><strong>主体：</strong>保持画面主题明确，减少背景杂乱干扰。</li>
+          <li><strong>稳定：</strong>慢门拍摄时保持稳定，必要时使用支撑或防抖。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>上传照片并获取 AI 评价</h2>
+        <input id="photoInput" type="file" accept="image/*" />
+        <img id="preview" class="preview" alt="上传图片预览" />
+        <div id="result" class="result"></div>
+      </section>
+    </main>
+
+    <script>
+      const input = document.getElementById("photoInput");
+      const preview = document.getElementById("preview");
+      const result = document.getElementById("result");
+
+      function scoreImage(width, height, sizeBytes) {
+        let score = 60;
+        const ratio = width / height;
+
+        if (ratio > 0.75 && ratio < 1.8) score += 15;
+        if (width >= 1080) score += 10;
+        if (sizeBytes > 200 * 1024 && sizeBytes < 8 * 1024 * 1024) score += 10;
+
+        return Math.min(score, 95);
+      }
+
+      function buildAdvice(score, width, height) {
+        const tips = [];
+
+        if (width < 1080 || height < 1080) {
+          tips.push("建议提高拍摄分辨率，便于后期裁切与细节保留。");
+        }
+        if (Math.abs(width - height) < 80) {
+          tips.push("当前画幅接近 1:1，适合突出主体，可尝试留白增强叙事感。");
+        } else {
+          tips.push("可尝试三分法构图，将主体放在边缘交点提升视觉张力。");
+        }
+        if (score >= 85) {
+          tips.push("整体表现优秀，建议尝试不同光位拍摄，增强层次感。");
+        } else {
+          tips.push("建议关注光线方向与背景简化，突出主体会更明显。");
+        }
+
+        return tips;
+      }
+
+      input.addEventListener("change", (event) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        const objectUrl = URL.createObjectURL(file);
+        preview.src = objectUrl;
+        preview.style.display = "block";
+
+        const image = new Image();
+        image.onload = () => {
+          const score = scoreImage(image.width, image.height, file.size);
+          const advice = buildAdvice(score, image.width, image.height);
+
+          result.innerHTML = `
+            <strong>AI 评价分数：${score} / 100</strong><br />
+            图片尺寸：${image.width} × ${image.height}<br />
+            建议：<br />- ${advice.join("<br />- ")}
+          `;
+          result.style.display = "block";
+          URL.revokeObjectURL(objectUrl);
+        };
+        image.src = objectUrl;
+      });
+    </script>
+  </body>
+</html>
