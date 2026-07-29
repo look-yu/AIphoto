@@ -25,7 +25,7 @@
       <view
         class="issue-marker"
         wx:for="{{issues}}"
-        wx:key="index"
+        wx:key="title"
         style="left: {{item.x}}%; top: {{item.y}}%;"
         bindtap="showIssueDetail"
         data-index="{{index}}"
@@ -58,7 +58,7 @@
         <view
           class="issue-item"
           wx:for="{{analysisResult.issues}}"
-          wx:key="index"
+          wx:key="title"
         >
           <view class="issue-icon">⚠️</view>
           <view class="issue-content">
@@ -77,7 +77,7 @@
         <view
           class="suggestion-item"
           wx:for="{{analysisResult.suggestions}}"
-          wx:key="index"
+          wx:key="*this"
         >
           <text class="suggestion-bullet">·</text>
           <text class="suggestion-text">{{item}}</text>
@@ -97,7 +97,7 @@
 
   <!-- 底部操作栏 -->
   <view class="bottom-actions">
-    <view class="action-btn primary" bindtap="{{hasImage && !analyzed ? 'startAnalyze' : (analyzed ? 'reAnalyze' : '')}}">
+    <view class="action-btn primary" bindtap="onPrimaryAction">
       <text>{{analyzed ? '重新评阅' : (analyzing ? '分析中...' : '开始评阅')}}</text>
     </view>
     <view class="action-btn secondary" wx:if="{{analyzed}}" bindtap="saveToGallery">
@@ -107,7 +107,7 @@
 
   <!-- 历史记录入口 -->
   <view class="history-entry" bindtap="goToHistory">
-    <text class="history-icon">📚</text>
+    <view class="history-icon"></view>
     <text class="history-text">评阅历史</text>
     <text class="history-arrow">›</text>
   </view>

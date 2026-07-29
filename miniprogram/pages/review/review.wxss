@@ -416,7 +416,35 @@ page {
 }
 
 .history-icon {
-  font-size: 28rpx;
+  width: 32rpx;
+  height: 32rpx;
+  border: 3rpx solid var(--accent-amber);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.history-icon::before {
+  content: '';
+  position: absolute;
+  width: 3rpx;
+  height: 9rpx;
+  background: var(--accent-amber);
+  top: 5rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.history-icon::after {
+  content: '';
+  position: absolute;
+  width: 3rpx;
+  height: 6rpx;
+  background: var(--accent-amber);
+  bottom: 50%;
+  right: 50%;
+  transform-origin: bottom center;
+  transform: translate(1rpx, 0) rotate(45deg);
 }
 
 .history-text {

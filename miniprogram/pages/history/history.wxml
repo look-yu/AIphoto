@@ -1,0 +1,90 @@
+<!-- 评阅历史页 -->
+<view class="page-container">
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">←</view>
+    <text class="nav-title">评阅历史</text>
+    <view class="nav-placeholder"></view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:elif="{{reviews.length === 0}}">
+    <text class="empty-icon">📷</text>
+    <text class="empty-title">暂无评阅记录</text>
+    <text class="empty-desc">上传你的第一张作品，获得AI评阅吧</text>
+  </view>
+
+  <!-- 历史列表 -->
+  <view class="review-list" wx:else>
+    <view
+      class="review-card {{expandedId === item._id ? 'expanded' : ''}}"
+      wx:for="{{reviews}}"
+      wx:key="_id"
+      data-id="{{item._id}}"
+      bindtap="toggleDetail"
+    >
+      <!-- 卡片概要 -->
+      <view class="card-header">
+        <view class="card-score-section">
+          <text class="card-score">{{item.totalScore}}</text>
+          <text class="card-unit">分</text>
+        </view>
+        <view class="card-info">
+          <text class="card-grade">{{item.displayGrade}}</text>
+          <text class="card-date">评阅于 {{item.displayDate}}</text>
+        </view>
+        <view class="card-arrow">{{expandedId === item._id ? '−' : '+'}}</view>
+      </view>
+
+      <!-- 展开详情 -->
+      <view class="card-detail" wx:if="{{expandedId === item._id}}">
+        <view class="detail-scores">
+          <view class="score-item">
+            <text class="score-label">构图</text>
+            <view class="score-bar-bg">
+              <view class="score-bar-fill" style="width: {{item.composition}}%"></view>
+            </view>
+            <text class="score-num">{{item.composition}}</text>
+          </view>
+          <view class="score-item">
+            <text class="score-label">光线</text>
+            <view class="score-bar-bg">
+              <view class="score-bar-fill" style="width: {{item.light}}%"></view>
+            </view>
+            <text class="score-num">{{item.light}}</text>
+          </view>
+          <view class="score-item">
+            <text class="score-label">色彩</text>
+            <view class="score-bar-bg">
+              <view class="score-bar-fill" style="width: {{item.color}}%"></view>
+            </view>
+            <text class="score-num">{{item.color}}</text>
+          </view>
+          <view class="score-item">
+            <text class="score-label">主题</text>
+            <view class="score-bar-bg">
+              <view class="score-bar-fill" style="width: {{item.theme}}%"></view>
+            </view>
+            <text class="score-num">{{item.theme}}</text>
+          </view>
+        </view>
+
+        <view class="detail-suggestions" wx:if="{{item.suggestions.length}}">
+          <text class="detail-label">改进建议</text>
+          <view
+            class="suggestion-line"
+            wx:for="{{item.suggestions}}"
+            wx:key="*this"
+          >
+            <text class="suggestion-bullet">·</text>
+            <text class="suggestion-text">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

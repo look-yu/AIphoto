@@ -14,6 +14,17 @@ App({
         env: this.globalData.env,
         traceUser: true,
       });
+
+      // 自动登录——创建或更新用户记录
+      wx.cloud.callFunction({
+        name: 'login'
+      }).then(res => {
+        if (res.result && res.result.success) {
+          this.globalData.userInfo = res.result.data;
+        }
+      }).catch(err => {
+        console.error('登录云函数调用失败:', err);
+      });
     }
   },
 });

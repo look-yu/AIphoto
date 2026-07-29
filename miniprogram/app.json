@@ -6,7 +6,10 @@
     "pages/academy/academy",
     "pages/about/about",
     "pages/topic/topic",
-    "pages/review/review"
+    "pages/review/review",
+    "pages/history/history",
+    "pages/agreement/agreement",
+    "pages/privacy/privacy"
   ],
   "window": {
     "backgroundColor": "#FAF9F7",

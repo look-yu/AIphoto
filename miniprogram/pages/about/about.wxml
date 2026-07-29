@@ -1,10 +1,11 @@
-<!-- 关于页 - Cinematic Darkroom -->
+<!-- 关于页 -->
 <view class="page-container">
   <view class="nav-bar">
     <text class="nav-title">关于</text>
   </view>
 
   <view class="about-content">
+    <!-- 品牌区 -->
     <view class="about-hero">
       <text class="about-logo">摄影智评</text>
       <text class="about-tagline">Photography AI Review</text>
@@ -12,32 +13,52 @@
 
     <view class="about-divider"></view>
 
+    <!-- 小程序介绍 -->
     <view class="about-desc-section">
+      <text class="section-eyebrow">About</text>
       <text class="about-desc">
         依托AI技术为摄影爱好者提供帮助的小程序。轻松有趣，让用户在任何时候都能获得摄影方面的启发与帮助。
       </text>
       <text class="about-desc">
-        我们相信，每一张照片都值得被认真对待。
+        我们相信，每一张照片都值得被认真对待。无论是记录生活的新手，还是追求艺术表达的进阶玩家，摄影智评都能成为你身边的摄影伴侣。
+      </text>
+      <text class="about-desc">
+        AI多维度评阅帮助你发现作品的优点与改进方向，系统化的知识学院伴随你从入门到精通，而智能助手则随时解答你拍摄中遇到的任何疑问。
       </text>
     </view>
 
+    <!-- 三大核心功能 -->
+    <view class="section-eyebrow" style="margin-bottom: 32rpx;">Core Functions</view>
     <view class="about-features">
       <view class="feature-item">
         <text class="feature-icon">◉</text>
         <text class="feature-title">AI智能评阅</text>
-        <text class="feature-text">多维度分析你的作品</text>
+        <text class="feature-text">多维度分析构图、光线、色彩与主题表达，给出针对性改进建议</text>
       </view>
       <view class="feature-item">
         <text class="feature-icon">◈</text>
-        <text class="feature-title">学习成长</text>
-        <text class="feature-text">系统化摄影知识体系</text>
+        <text class="feature-title">摄影学习学院</text>
+        <text class="feature-text">从基础入门到进阶技巧，24个专题系统化学习路径</text>
       </view>
       <view class="feature-item">
         <text class="feature-icon">◇</text>
-        <text class="feature-title">交流分享</text>
-        <text class="feature-text">与摄影爱好者互动</text>
+        <text class="feature-title">智能摄影助手</text>
+        <text class="feature-text">随时问答，像朋友聊天一样解答摄影疑问</text>
       </view>
     </view>
+  </view>
+
+  <!-- 底部合规区域 -->
+  <view class="about-footer">
+    <view class="footer-version">
+      <text class="version-text">{{version}}</text>
+    </view>
+    <view class="footer-links">
+      <text class="footer-link" bindtap="goToAgreement">用户协议</text>
+      <text class="footer-sep">|</text>
+      <text class="footer-link" bindtap="goToPrivacy">隐私政策</text>
+    </view>
+    <text class="footer-copy">© 2026 摄影智评 · 保留所有权利</text>
   </view>
 
   <!-- 悬浮操作按钮 -->

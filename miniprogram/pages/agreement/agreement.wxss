@@ -1,0 +1,131 @@
+/* 用户协议页 */
+page {
+  background: var(--bg-cream);
+}
+
+.page-container {
+  min-height: 100vh;
+  background: var(--bg-cream);
+  padding-bottom: 60rpx;
+}
+
+/* 导航栏 */
+.nav-bar {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-white);
+  padding: 0 32rpx;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1rpx solid var(--border-subtle);
+}
+
+.nav-back {
+  font-size: 44rpx;
+  color: var(--accent-amber);
+  width: 80rpx;
+}
+
+.nav-title {
+  font-family: 'Georgia', serif;
+  font-size: 34rpx;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.nav-placeholder {
+  width: 80rpx;
+}
+
+/* 内容区 */
+.content-area {
+  padding: 48rpx 40rpx;
+}
+
+.page-header {
+  margin-bottom: 48rpx;
+}
+
+.doc-title {
+  font-family: 'Georgia', serif;
+  font-size: 48rpx;
+  color: var(--text-dark);
+  display: block;
+  margin-bottom: 12rpx;
+  line-height: 1.2;
+}
+
+.doc-meta {
+  font-size: 24rpx;
+  color: var(--text-muted);
+  letter-spacing: 2rpx;
+}
+
+/* 目录栏 */
+.toc-bar {
+  background: var(--bg-white);
+  border-radius: 12rpx;
+  padding: 24rpx 28rpx;
+  margin-bottom: 48rpx;
+  box-shadow: var(--shadow-card);
+}
+
+.toc-label {
+  font-family: 'Georgia', serif;
+  font-size: 24rpx;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 16rpx;
+  text-transform: uppercase;
+  letter-spacing: 3rpx;
+}
+
+.toc-list {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.toc-item {
+  display: inline-block;
+  font-size: 24rpx;
+  color: var(--accent-amber);
+  background: rgba(201, 164, 96, 0.1);
+  padding: 8rpx 20rpx;
+  border-radius: 40rpx;
+  margin-right: 12rpx;
+  border: 1rpx solid rgba(201, 164, 96, 0.3);
+}
+
+/* 章节 */
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 56rpx;
+}
+
+.section-block {
+  background: var(--bg-white);
+  border-radius: 16rpx;
+  padding: 40rpx 36rpx;
+  box-shadow: var(--shadow-card);
+}
+
+.section-title {
+  font-family: 'Georgia', serif;
+  font-size: 30rpx;
+  color: var(--text-dark);
+  display: block;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.section-content {
+  font-size: 27rpx;
+  color: var(--text-body);
+  line-height: 1.9;
+  display: block;
+}

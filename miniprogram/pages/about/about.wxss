@@ -6,7 +6,7 @@ page {
 .page-container {
   min-height: 100vh;
   background: var(--bg-cream);
-  padding-bottom: 140rpx;
+  padding-bottom: 200rpx;
 }
 
 .nav-bar {
@@ -31,11 +31,11 @@ page {
 }
 
 .about-content {
-  padding: 100rpx 48rpx;
+  padding: 80rpx 48rpx 40rpx;
 }
 
 .about-hero {
-  margin-bottom: 64rpx;
+  margin-bottom: 48rpx;
 }
 
 .about-logo {
@@ -59,11 +59,22 @@ page {
   width: 80rpx;
   height: 2rpx;
   background: var(--accent-amber);
-  margin-bottom: 64rpx;
+  margin-bottom: 56rpx;
+}
+
+/* 章节标签 */
+.section-eyebrow {
+  font-family: 'Georgia', serif;
+  font-size: 22rpx;
+  color: var(--accent-amber);
+  letter-spacing: 4rpx;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 24rpx;
 }
 
 .about-desc-section {
-  margin-bottom: 80rpx;
+  margin-bottom: 72rpx;
 }
 
 .about-desc {
@@ -71,13 +82,14 @@ page {
   color: var(--text-body);
   line-height: 1.85;
   display: block;
-  margin-bottom: 36rpx;
+  margin-bottom: 28rpx;
 }
 
+/* 功能卡片 */
 .about-features {
   display: flex;
   flex-direction: column;
-  gap: 56rpx;
+  gap: 48rpx;
 }
 
 .feature-item {
@@ -103,6 +115,53 @@ page {
 .feature-text {
   font-size: 26rpx;
   color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* 底部合规区域 */
+.about-footer {
+  padding: 48rpx 40rpx 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  border-top: 1rpx solid var(--border-subtle);
+  margin-top: 16rpx;
+}
+
+.footer-version {
+  margin-bottom: 4rpx;
+}
+
+.version-text {
+  font-family: 'Georgia', serif;
+  font-size: 26rpx;
+  color: var(--text-muted);
+  letter-spacing: 2rpx;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.footer-link {
+  font-size: 26rpx;
+  color: var(--text-body);
+  text-decoration: underline;
+}
+
+.footer-sep {
+  font-size: 24rpx;
+  color: var(--text-muted);
+}
+
+.footer-copy {
+  font-size: 22rpx;
+  color: var(--text-muted);
+  letter-spacing: 1rpx;
+  margin-top: 8rpx;
 }
 
 /* 悬浮操作按钮 */

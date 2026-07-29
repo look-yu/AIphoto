@@ -5,6 +5,8 @@ cloud.init({
 });
 
 const db = cloud.database();
+const http = require('http');
+const https = require('https');
 
 /**
  * 摄影助手对话云函数

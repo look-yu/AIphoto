@@ -1,0 +1,221 @@
+/* 评阅历史页 - Editorial Magazine Style */
+page {
+  background: var(--bg-cream);
+}
+
+.page-container {
+  min-height: 100vh;
+  background: var(--bg-cream);
+  padding-bottom: 40rpx;
+}
+
+/* 导航栏 */
+.nav-bar {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-white);
+  padding: 0 32rpx;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1rpx solid var(--border-subtle);
+}
+
+.nav-back {
+  font-size: 44rpx;
+  color: var(--accent-amber);
+  width: 80rpx;
+}
+
+.nav-title {
+  font-family: 'Georgia', serif;
+  font-size: 34rpx;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.nav-placeholder {
+  width: 80rpx;
+}
+
+/* 加载中 */
+.loading-state {
+  padding: 200rpx 0;
+  text-align: center;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: var(--text-muted);
+}
+
+/* 空状态 */
+.empty-state {
+  padding: 200rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 32rpx;
+}
+
+.empty-title {
+  font-family: 'Georgia', serif;
+  font-size: 32rpx;
+  color: var(--text-dark);
+  margin-bottom: 16rpx;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  color: var(--text-muted);
+}
+
+/* 历史列表 */
+.review-list {
+  padding: 24rpx 32rpx;
+}
+
+.review-card {
+  background: var(--bg-white);
+  border-radius: 16rpx;
+  margin-bottom: 24rpx;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.review-card.expanded {
+  box-shadow: var(--shadow-soft);
+}
+
+/* 卡片概要 */
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 32rpx;
+}
+
+.card-score-section {
+  display: flex;
+  align-items: baseline;
+  margin-right: 28rpx;
+}
+
+.card-score {
+  font-family: 'Georgia', serif;
+  font-size: 56rpx;
+  color: var(--accent-amber);
+  line-height: 1;
+}
+
+.card-unit {
+  font-size: 22rpx;
+  color: var(--text-muted);
+  margin-left: 4rpx;
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-grade {
+  font-family: 'Georgia', serif;
+  font-size: 28rpx;
+  color: var(--text-dark);
+  font-style: italic;
+  margin-bottom: 6rpx;
+}
+
+.card-date {
+  font-size: 24rpx;
+  color: var(--text-muted);
+}
+
+.card-arrow {
+  font-size: 36rpx;
+  color: var(--accent-amber);
+  width: 48rpx;
+  text-align: center;
+}
+
+/* 展开详情 */
+.card-detail {
+  border-top: 1rpx solid var(--border-subtle);
+  padding: 32rpx;
+}
+
+.detail-scores {
+  margin-bottom: 28rpx;
+}
+
+.score-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18rpx;
+}
+
+.score-label {
+  width: 60rpx;
+  font-size: 24rpx;
+  color: var(--text-body);
+}
+
+.score-bar-bg {
+  flex: 1;
+  height: 8rpx;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 4rpx;
+  margin: 0 16rpx;
+}
+
+.score-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-amber), #E8C068);
+  border-radius: 4rpx;
+  transition: width 0.6s ease;
+}
+
+.score-num {
+  width: 48rpx;
+  text-align: right;
+  font-size: 26rpx;
+  color: var(--accent-amber);
+  font-weight: 500;
+}
+
+/* 建议区域 */
+.detail-label {
+  font-family: 'Georgia', serif;
+  font-size: 26rpx;
+  color: var(--text-dark);
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.suggestion-line {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10rpx;
+}
+
+.suggestion-bullet {
+  color: var(--accent-amber);
+  font-size: 24rpx;
+  margin-right: 12rpx;
+  line-height: 1.6;
+}
+
+.suggestion-text {
+  font-size: 24rpx;
+  color: var(--text-body);
+  line-height: 1.6;
+  flex: 1;
+}
